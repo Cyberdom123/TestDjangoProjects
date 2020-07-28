@@ -1,11 +1,11 @@
-from django.urs import path
-from . import view
+from django.urls import path
+from . import views
 
 app_name = 'blog'
 
 urlpatterns = [
-patch('', view.post_list, name= 'post_list'),
-patch('<int:year>/<int:month>/<int:day>/<slug:post>/',
-views.post_detail, name= 'post_detail'),
+	path('', views.post_list, name= 'post_list'),
+	path('<int:year>/<int:month>/<int:day>/<slug:post>/',
+	views.post_detail, name= 'post_detail'),
 
 ]
