@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post, Comment
 from django.core.paginator import Paginator, EmptyPage,\
 PageNotAnInteger
 from django.views.generic import ListView
 from django.core.mail import send_mail
-from .forms import EmailPostForm
+from .forms import EmailPostForm, CommentForm
 
 def post_list(request):  #fonctoion based view, now its out of use
     object_list = Post.published.all()
@@ -35,8 +35,27 @@ def post_detail(request, year, month, day, post):
         publish__year = year,
         publish__month = month,
         publish__day = day)
+    #list of active commens for this post
+    comments = post.comments.filter(active=True)
 
-    return render(request, 'blog/post/detail.html', {'post': post})
+    new_comment = None
+
+    if request.method == 'POST';
+    # A comment was posted
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        # create comment object but don't save to database yet
+        new_comment = comment_form.save(commit=False)
+        # Assign the current post to the comment
+        new_comment.post = post
+        #Save the commnet
+        new_comment.save()
+    else:
+        comment_form = CommentForm()
+    return render(request, 'blog/post/detail.html', {'post': post,
+                                                    'comment':comment
+                                                    'new_comment':new_comment
+                                                    'comment_form':comment_form})
 
 def post_share(request, post_id):
     # Retrive post by id
