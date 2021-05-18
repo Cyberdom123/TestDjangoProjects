@@ -36,16 +36,16 @@ def post_detail(request, year, month, day, post):
         publish__month = month,
         publish__day = day)
     #list of active commens for this post
-    comments = post.comments.filter(active=True)
+    comments = post.comment.filter(active=True)
 
     new_comment = None
 
-    if request.method == 'POST';
-    # A comment was posted
-    comment_form = CommentForm(request.POST)
+    if request.method == 'POST':
+        # A comment was posted
+        comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
         # create comment object but don't save to database yet
-        new_comment = comment_form.save(commit=False)
+        new_comment = comment_form.save()
         # Assign the current post to the comment
         new_comment.post = post
         #Save the commnet
@@ -53,8 +53,8 @@ def post_detail(request, year, month, day, post):
     else:
         comment_form = CommentForm()
     return render(request, 'blog/post/detail.html', {'post': post,
-                                                    'comment':comment
-                                                    'new_comment':new_comment
+                                                    'comment':comment,
+                                                    'new_comment':new_comment,
                                                     'comment_form':comment_form})
 
 def post_share(request, post_id):
