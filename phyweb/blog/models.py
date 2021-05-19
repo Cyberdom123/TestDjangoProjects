@@ -44,7 +44,7 @@ def __str__(self):
 class Comment(models.Model):
 	post = models.ForeignKey(Post,
 							on_delete=models.CASCADE,
-							related_name='Comments')
+							related_name='comments')
 	name = models.CharField(max_length=80)
 	email = models.EmailField()
 	body = models.TextField()

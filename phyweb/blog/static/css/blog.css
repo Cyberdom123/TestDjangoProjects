@@ -66,8 +66,8 @@ input[type=submit] {
     font-weight:bold;
     background:#00abff;
     color:#fff;
-    padding:10px 20px;
-    font-size:14px;
+    padding:8px 16px;
+    font-size:12px;
     text-transform:uppercase; 
 }
 .errorlist { 

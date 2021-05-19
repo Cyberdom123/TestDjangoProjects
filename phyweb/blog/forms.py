@@ -8,6 +8,7 @@ class EmailPostForm(forms.Form):
 						widget=forms.Textarea)
 
 class CommentForm(forms.ModelForm):
-	models = Comment
-	fields = ('name','email','body')
+	class Meta:
+		model = Comment
+		fields = ('name', 'email', 'body')
 	
