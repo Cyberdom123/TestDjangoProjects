@@ -3,7 +3,6 @@ body {
     padding:0;
     font-family:helvetica, sans-serif; 
 }
-
 a { 
     color:#00abff;
     text-decoration:none; 
@@ -77,7 +76,6 @@ input[type=submit] {
     clear:both;
     padding-left:10px; 
 }
-
 /* comments */
 .comment {
     padding:10px;
