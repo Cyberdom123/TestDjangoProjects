@@ -6,26 +6,11 @@ from django.views.generic import ListView
 from django.core.mail import send_mail
 from .forms import EmailPostForm, CommentForm
 
-def post_list(request):  #fonctoion based view, now its out of use
-    object_list = Post.published.all()
-    paginator = Paginator(object_list, 3) #3 post on each page
-    page = request.GET.get('page')
 
-    try:
-    	posts = paginator.page(page)
-    except PageNotAnInteger:
-    	#if page is not an intrger deliver the first page
-    	posts = paginator.page(1)
-    except EmptyPage:
-    	#if page is out of range deliver the last page of results
-    	posts = paginator.page(paginator.num_pages)
-
-    return render(request, 'blog/post/list.html', {'page': page,
-    											 'posts': posts})
-class PostListView(ListView): #same view based on class, site view with object list.
+class PostListView(ListView):  #same view based on class, site view with object list.
     queryset = Post.published.all()
     context_object_name = 'posts'
-    paginate_by = 3
+    paginate_by = 5
     template_name = 'blog/post/list.html'
 
 def post_detail(request, year, month, day, post):
@@ -36,26 +21,8 @@ def post_detail(request, year, month, day, post):
         publish__month = month,
         publish__day = day)
     #list of active commens for this post
-    comments = post.comment.filter(active=True)
 
-    new_comment = None
-
-    if request.method == 'POST':
-        # A comment was posted
-        comment_form = CommentForm(request.POST)
-    if comment_form.is_valid():
-        # create comment object but don't save to database yet
-        new_comment = comment_form.save()
-        # Assign the current post to the comment
-        new_comment.post = post
-        #Save the commnet
-        new_comment.save()
-    else:
-        comment_form = CommentForm()
-    return render(request, 'blog/post/detail.html', {'post': post,
-                                                    'comment':comment,
-                                                    'new_comment':new_comment,
-                                                    'comment_form':comment_form})
+    return render(request, 'blog/post/detail.html', {'post': post})
 
 def post_share(request, post_id):
     # Retrive post by id

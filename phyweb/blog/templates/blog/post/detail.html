@@ -9,7 +9,21 @@
 	</p>
 	{{ post.body|linebreaks }}
 	<p>
+
+	<button id="sendbutton">Send via emial</button>
+
+	<div id="myDIV" class="panel" hidden>
+	This is my DIV element.
+	</div>
+
 	<a href="{% url "blog:post_share" post.id %}">
 	Share this post</a>
 	</p>
+
+	<script>
+		document.getElementById("sendbutton")
+        .addEventListener("click", function() {
+  		document.getElementById("myDIV").hidden = false;
+		}, true);	
+	</script>
 {% endblock %}
