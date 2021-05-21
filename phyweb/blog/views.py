@@ -94,5 +94,5 @@ def post_share(request, post_id):
 def TestPage(request):
 
     form = EmailPostForm()
-    return render(request, 'blog/post/share.html', {'form':form})
+    return render(request, 'blog/post/test.html', {'form':form})
 # Create your views here.

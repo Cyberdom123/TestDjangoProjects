@@ -28,12 +28,6 @@
 		{% endif %}
 	</div>
 
-	<script>
-		document.getElementById("sendbutton")
-        .addEventListener("click", function() {
-  		document.getElementById("myDIV").hidden = false;
-		}, true);	
-	</script>
 	{% with comments.count as total_comments %}
 	<h2>
 	{{ total_comments }} comment {{ total_comments|pluralize }}
@@ -62,4 +56,13 @@
 	<p><input type="submit" value="Add comment"></p>
 	</form>
 	{% endif %}
+
+<script>
+	document.getElementById("sendbutton")
+   	.addEventListener("click", function() {
+  	document.getElementById("myDIV").hidden = false;
+	}, true);	
+</script>
+	
+
 {% endblock %}
