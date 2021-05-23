@@ -1,0 +1,35 @@
+body {
+  background: #fff !important;  
+}
+
+.wrapper {  
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.login-screen {
+  text-align: center;
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: black;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px;
+  } 
+
+input {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+input[type=button] {
+  color: black;
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  text-align: center;
+}

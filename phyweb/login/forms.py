@@ -1,7 +1,9 @@
 from django import forms
 
 class LoginForm(forms.Form):
-	login = forms.CharField(label = "phonenumber, email", 
-							required = True)
-	password = forms.CharField(label = "Password", max_length = 20,
-							required = True)
+	login = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Email or phone'}), 
+							required = True,
+							label ='')
+	password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password'}),
+							required = True,
+							label = '')

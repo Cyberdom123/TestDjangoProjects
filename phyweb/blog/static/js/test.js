@@ -1,3 +1,3 @@
-function showElem() {
-  document.getElementById("123").style.visibility = "visible"; 
+function myFunction() {
+  alert("Hello! I am an alert box!");
 }

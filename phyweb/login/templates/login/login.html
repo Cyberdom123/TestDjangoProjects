@@ -1,9 +1,17 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>test</title>
+	<title>Log in</title>
+	{% load static %}
+	<link href="{% static "css/login.css" %}" rel="stylesheet">
+	<script type = "text/javascript" src="{% static "js/validate.js" %}"></script>
 </head>
 <body>
-	hello
+	<div class="wrapper">
+	<div class="login-screen">
+	{{ form.as_p }}
+	{% csrf_token %}
+	<input type="button" value="Log in" onclick="validate()">
+	</div>
+	</div>
 </body>
 </html>
