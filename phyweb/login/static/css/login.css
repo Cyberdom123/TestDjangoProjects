@@ -1,7 +1,10 @@
 body {
-  background: #fff !important;  
+  background: #10111a !important;
+  font-family:helvetica, sans-serif;  
 }
-
+h2 {
+  color: #ffff;
+}
 .wrapper {  
   margin-top: 80px;
   margin-bottom: 80px;
@@ -18,7 +21,7 @@ body {
   } 
 
 input {
-  width: 50%;
+  width: 80%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -26,7 +29,6 @@ input {
 }
 
 input[type=button] {
-  color: black;
   width: 30%;
   padding: 12px 20px;
   margin: 8px 0;
