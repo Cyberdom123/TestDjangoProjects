@@ -28,7 +28,7 @@ input {
   text-align: center;
 }
 
-input[type=button] {
+input[type=submit] {
   width: 30%;
   padding: 12px 20px;
   margin: 8px 0;
