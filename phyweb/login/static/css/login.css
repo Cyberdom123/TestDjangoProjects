@@ -5,9 +5,15 @@ body {
 h2 {
   color: #ffff;
 }
+h4  {
+  color: #ffff;
+}
 .wrapper {  
   margin-top: 80px;
   margin-bottom: 80px;
+}
+a {
+  color: #ffff;
 }
 
 .login-screen {

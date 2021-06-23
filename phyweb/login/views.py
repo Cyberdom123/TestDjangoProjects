@@ -1,13 +1,8 @@
 from django.shortcuts import render
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 from .models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-
-#def login(request):
-#	form = LoginForm()
-#	return render(request, 'login/login.html', {'form':form})
-
 
 def login_view(request):
 	if request.method == 'POST':
@@ -35,13 +30,20 @@ def customlogin(request):
 		form = LoginForm(request.POST)
 		if form.is_valid():
 			cd = form.cleaned_data
-			username = cd['login']
+			login = cd['login']
 			password = cd['password']
 			try:
-				user = User.UserManager.get_by_natural_key(username)
+				user = User.objects.get(username = login)
+				return HttpResponse('elo')
 			except User.DoesNotExist:
-				return None
+				return HttpResponse('nie maaa!')
 	else:
 		form = LoginForm()
 		return render(request, 'login/login.html',{'form':form})
 
+def register(request):
+	if request.method == 'POST':
+		form = RegisterForm(request.POST)
+	else:
+		form = RegisterForm()
+		return render(request, 'register/register.html',{'form':form})	

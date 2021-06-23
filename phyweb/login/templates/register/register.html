@@ -1,24 +1,21 @@
+!<!DOCTYPE html>
 <html>
 <head>
-	<title>Log in</title>
+	<meta charset="utf-8">
+	<title>Sign up</title>
+
 	{% load static %}
 	<link href="{% static "css/login.css" %}" rel="stylesheet">
-	<script type = "text/javascript" src="{% static "js/validate.js" %}"></script>
 </head>
 <body>
 	<div class="wrapper">
 	<div class="login-screen">
-	<h2>Log in</h2>
-	{% if form.errors %}
-		<p>Username or password didn't match</p>
-	{% endif %}
+	<h2>Sign up</h2>
+
 	<form method="POST">
 	{{ form.as_p }}
 	{% csrf_token %}
 	<input type="submit" value="Submit" onclick="validate()">
-	<h4>Don't have an account?
-	<a href="/register/">Register</a>
-	</h4>
 	</form>
 	</div>
 	</div>
