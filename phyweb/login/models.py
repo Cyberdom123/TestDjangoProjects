@@ -5,5 +5,9 @@ class User(models.Model):
 	emial = models.EmailField(max_length=254)
 	password = models.CharField(max_length=256)
 
-	def natural_ket(self):
+	def natural_key(self):
 		return (self.username)
+
+	class UserManager(models.Manager):
+		def get_by_natural_key(self, username):
+			return self.get(**{self.model.username: username})

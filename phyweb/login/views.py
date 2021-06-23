@@ -38,6 +38,10 @@ def customlogin(request):
 			username = cd['login']
 			password = cd['password']
 			try:
-				user = User._deflaut_manager.get_by_natural_key(username)
+				user = User.UserManager.get_by_natural_key(username)
 			except User.DoesNotExist:
 				return None
+	else:
+		form = LoginForm()
+		return render(request, 'login/login.html',{'form':form})
+
