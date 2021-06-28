@@ -21,3 +21,6 @@ class RegisterForm(forms.Form):
 	password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password'}),
 							required = True,
 							label = '')
+	confirm_password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Confirm password'}),
+							required = True,
+							label = '')

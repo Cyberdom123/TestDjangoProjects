@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -6,16 +6,20 @@
 
 	{% load static %}
 	<link href="{% static "css/login.css" %}" rel="stylesheet">
+	<script type = "text/javascript" src="{% static "js/register.js" %}"></script>
 </head>
 <body>
 	<div class="wrapper">
 	<div class="login-screen">
+	<div id="errors">		
+	</div>	
+
 	<h2>Sign up</h2>
 
-	<form method="POST">
+	<form action="" name="RegisterForm" method="POST">
 	{{ form.as_p }}
 	{% csrf_token %}
-	<input type="submit" value="Submit" onclick="validate()">
+	<input type="button" value="OK" onclick="validate()">
 	</form>
 	</div>
 	</div>
