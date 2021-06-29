@@ -19,7 +19,7 @@ class RegisterForm(forms.Form):
 							required = True,
 							label ='')
 	password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password'}),
-							required = True,
+							min_length=8, max_length=128, required = True,
 							label = '')
 	confirm_password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Confirm password'}),
 							required = True,
