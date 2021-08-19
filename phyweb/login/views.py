@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import LoginForm, RegisterForm
-from .models import User
+from .forms import LoginForm, RegisterForm, Register
+from .models import CustomUser
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
@@ -25,7 +25,7 @@ def login_view(request):
 		form = LoginForm()
 	return render(request, 'login/login.html',{'form':form})
 
-def customlogin(request):
+def custom_login(request):
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
 		if form.is_valid():
@@ -33,15 +33,15 @@ def customlogin(request):
 			login = cd['login']
 			password = cd['password']
 			try:
-				user = User.objects.get(username = login, password = password)
+				user = CustomUser.objects.get(username = login, password = password)
 				return HttpResponse('elo')
-			except User.DoesNotExist:
+			except CustomUser.DoesNotExist:
 				return HttpResponse('nie maaa!')
 	else:
 		form = LoginForm()
 		return render(request, 'login/login.html',{'form':form})
 
-def register(request):
+def custom_register(request):
 	if request.method == 'POST':
 		form = RegisterForm(request.POST)
 		if form.is_valid():
@@ -50,7 +50,7 @@ def register(request):
 			email = request.POST['email']
 			password = request.POST['password']
 
-			new_user = User(username=username,phone=phone,
+			new_user = CustomUser(username=username,phone=phone,
 						emial=email, password=password)
 			new_user.save()
 			return HttpResponse('user saved!')
@@ -59,3 +59,18 @@ def register(request):
 	else:
 		form = RegisterForm()
 		return render(request, 'register/register.html',{'form':form})	
+
+def register(request):
+	if request.method == 'POST':
+		form = Register(request.POST)
+		if form.is_valid():
+			new_user = form.save(commit=False)
+			new_user.set_password(
+				form.cleaned_data['password'])
+			new_user.save()
+			return HttpResponse('oke!')
+		else:
+			return HttpResponse('hhoho!')
+	else:
+		form = Register()
+		return render(request, 'register/register.html',{'form':form})

@@ -1,6 +1,6 @@
 from django.db import models
 
-class User(models.Model):
+class CustomUser(models.Model):
 	username = models.CharField(max_length=32, unique=True)
 	phone = models.CharField(max_length=32, unique=True)
 	emial = models.EmailField(max_length=254, unique=True)

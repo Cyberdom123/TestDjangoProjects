@@ -1,6 +1,5 @@
 function validate() {
 	const username = document.forms["RegisterForm"]["username"].value;
-	const phone = document.forms["RegisterForm"]["phone"].value;
 	const email = document.forms["RegisterForm"]["email"].value;
 	const password1 = document.forms["RegisterForm"]["password"].value;
 	const password2 = document.forms["RegisterForm"]["confirm_password"].value;
@@ -33,3 +32,4 @@ function validate() {
 		RegisterForm.submit()	
 	}
 }
+GASH
