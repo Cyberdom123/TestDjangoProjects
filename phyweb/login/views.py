@@ -33,7 +33,7 @@ def customlogin(request):
 			login = cd['login']
 			password = cd['password']
 			try:
-				user = User.objects.get(username = login)
+				user = User.objects.get(username = login, password = password)
 				return HttpResponse('elo')
 			except User.DoesNotExist:
 				return HttpResponse('nie maaa!')
@@ -44,6 +44,18 @@ def customlogin(request):
 def register(request):
 	if request.method == 'POST':
 		form = RegisterForm(request.POST)
+		if form.is_valid():
+			username = request.POST['username']
+			phone = request.POST['phone']
+			email = request.POST['email']
+			password = request.POST['password']
+
+			new_user = User(username=username,phone=phone,
+						emial=email, password=password)
+			new_user.save()
+			return HttpResponse('user saved!')
+		else:
+			return HttpResponse('not vald form!')
 	else:
 		form = RegisterForm()
 		return render(request, 'register/register.html',{'form':form})	
