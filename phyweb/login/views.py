@@ -25,6 +25,30 @@ def login_view(request):
 		form = LoginForm()
 	return render(request, 'login/login.html',{'form':form})
 
+def register(request):
+	if request.method == 'POST':
+		form = Register(request.POST)
+		if form.is_valid():
+			new_user = form.save(commit=False)
+			new_user.set_password(
+				form.cleaned_data['password'])
+			new_user.save()
+			return HttpResponse('oke!')
+		else:
+			return HttpResponse('hhoho!')
+	else:
+		form = Register()
+		return render(request, 'register/register.html',{'form':form})
+
+
+#Custom login
+def user_authenticated():
+    return True
+
+def login_is_reqired():
+	return None #Redirect to login page if user is not authenticated
+				#Decorator
+
 def custom_login(request):
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
@@ -59,18 +83,3 @@ def custom_register(request):
 	else:
 		form = RegisterForm()
 		return render(request, 'register/register.html',{'form':form})	
-
-def register(request):
-	if request.method == 'POST':
-		form = Register(request.POST)
-		if form.is_valid():
-			new_user = form.save(commit=False)
-			new_user.set_password(
-				form.cleaned_data['password'])
-			new_user.save()
-			return HttpResponse('oke!')
-		else:
-			return HttpResponse('hhoho!')
-	else:
-		form = Register()
-		return render(request, 'register/register.html',{'form':form})

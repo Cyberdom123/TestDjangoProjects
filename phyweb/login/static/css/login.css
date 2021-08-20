@@ -3,17 +3,17 @@ body {
   font-family:helvetica, sans-serif;  
 }
 h2 {
-  color: #ffff;
+  color: black;
 }
 h4  {
-  color: #ffff;
+  color: black;
 }
 .wrapper {  
   margin-top: 80px;
   margin-bottom: 80px;
 }
 a {
-  color: #ffff;
+  color: black;
 }
 
 .login-screen {
@@ -21,7 +21,7 @@ a {
   max-width: 380px;
   padding: 15px 35px 45px;
   margin: 0 auto;
-  background-color: black;
+  background-color: #777777;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 5px;
   } 

@@ -5,7 +5,7 @@ PageNotAnInteger
 from django.views.generic import ListView
 from django.core.mail import send_mail
 from .forms import EmailPostForm, CommentForm
-
+from django.contrib.auth.decorators import login_required
 
 class PostListView(ListView):  #same view based on class, site view with object list.
     queryset = Post.published.all()
@@ -90,7 +90,7 @@ def post_share(request, post_id):
     return render(request, 'blog/post/share.html', {'post':post, 
                                                     'form':form,
                                                     'sent':sent})
-
+@login_required
 def TestPage(request):
 
     form = EmailPostForm()
