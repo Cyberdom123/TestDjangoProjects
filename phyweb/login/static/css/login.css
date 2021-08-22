@@ -22,9 +22,10 @@ a {
   padding: 15px 35px 45px;
   margin: 0 auto;
   background-color: #777777;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 2px solid rgba(0,0,0,0.1);
   border-radius: 5px;
   } 
+  
   #errors {
    color: #699ead;
   }
