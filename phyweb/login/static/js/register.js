@@ -32,4 +32,3 @@ function validate() {
 		RegisterForm.submit()	
 	}
 }
-GASH

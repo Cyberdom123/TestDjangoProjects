@@ -5,15 +5,14 @@
 }
 
 body{
-  background: #114452 !important;  
+  background-color: #264653;
   margin: 0;
   padding: 0;
 }
 
 #top_bar {
-  margin-left: 0px;
   text-align: center;
-  background-color: #777777;
+  background-color: #2a9d8f;
   position: fixed;
   top: 0;
   width: 100%;
